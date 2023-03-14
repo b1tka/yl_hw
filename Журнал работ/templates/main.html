@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 align="center">Works log</h1>
+{% set items = data[0] %}
+{% for i in range(data[1]) %}
+<div align="center">
+    <table>
+        <caption align="top"><h2>Action # {{ i + 1 }}</h2></caption>
+        <tr class="first">
+            <td align="left">Title of activity</td>
+            <td>Team leader</td>
+            <td>Duration</td>
+            <td>List of collaborators</td>
+            <td>is finished</td>
+        </tr>
+        <tr class="second">
+            <td>{{ items[i].job }}</td>
+            <td>{{ items[i].team_leader }}</td>
+            <td>{{ items[i].work_size }} hours</td>
+            <td class="center_text">{{ items[i].collaborators }}</td>
+            <td class="is_f">
+                {% if items[i].is_finished == 0%}
+                    is not finished
+                {% else %}
+                    is finished
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+
+{% endblock %}
